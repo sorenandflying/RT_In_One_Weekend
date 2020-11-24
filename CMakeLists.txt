@@ -19,9 +19,10 @@ set ( COMMON_SRC
   # src/common/camera.cpp
   # src/common/scene.cpp
   # src/common/sphere.cpp
-  src/InOneWeekend/hittable.h
-  src/InOneWeekend/hittable_list.h
-  src/InOneWeekend/sphere.h
+  src/common/camera.h
+  src/common/hittable.h
+  src/common/hittable_list.h
+  src/common/sphere.h
   src/common/hittable.h
   src/common/vec3.h
   src/common/ray.h
