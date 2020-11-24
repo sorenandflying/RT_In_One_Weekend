@@ -1,4 +1,0 @@
-/Users/sorenthompson/Desktop/RayTracing/codeAgain/build/CMakeFiles/rebuild_cache.dir
-/Users/sorenthompson/Desktop/RayTracing/codeAgain/build/CMakeFiles/edit_cache.dir
-/Users/sorenthompson/Desktop/RayTracing/codeAgain/build/CMakeFiles/helloworld.dir
-/Users/sorenthompson/Desktop/RayTracing/codeAgain/build/CMakeFiles/inOneWeekend.dir
