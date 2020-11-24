@@ -19,6 +19,10 @@ set ( COMMON_SRC
   # src/common/camera.cpp
   # src/common/scene.cpp
   # src/common/sphere.cpp
+  src/InOneWeekend/hittable.h
+  src/InOneWeekend/hittable_list.h
+  src/InOneWeekend/sphere.h
+  src/common/hittable.h
   src/common/vec3.h
   src/common/ray.h
 )
@@ -44,7 +48,6 @@ set ( SOURCE_ONE_WEEKEND
   # ${COMMON_ALL}
   ${COMMON_SRC}
   # ${INCLUDE_ALL}
-  # src/InOneWeekend/hittable.h
   src/InOneWeekend/main.cpp
   src/InOneWeekend/helloworld.cpp
 )
