@@ -3,4 +3,4 @@ Ray tracer following 'Ray Tracing in a Weekend' by Peter Shirley: https://github
 To run:
 * cmake -B build
 * cmake --build build
-* build/helloworld > renders/helloworld.ppm
+* build/InOneWeekend > renders/new_image.ppm

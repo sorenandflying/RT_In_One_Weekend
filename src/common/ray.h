@@ -14,11 +14,14 @@ public:
   ray(const vec3& o, const vec3& d){
     origin = o;
     direction = d;
+    direction.normalize();
   }
 
 // Getter Functions
   vec3 o() const { return origin; }
   vec3 d() const { return direction; }
+  // vec3 origin() const { return origin; }
+  // vec3 direction() const  { return direction; }
 
 // Functions
   vec3 point (float t) const {

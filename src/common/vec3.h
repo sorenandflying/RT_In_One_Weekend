@@ -3,6 +3,7 @@
 
 #include <math.h>
 #include <stdlib.h>
+#include <cmath>
 #include <iostream>
 
 class vec3{
@@ -41,10 +42,12 @@ public:
   inline float length() const {
     return sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
   }
+  inline float squared_length() const {
+    return v[0] * v[0] + v[1] * v[1] + v[2] * v[2];
+  }
   inline void normalize();
   inline vec3 norm();
 };
-
 
 /******** In/Out Operators ********/
 inline std::istream& operator>>(std::istream &is, vec3 &t){
@@ -185,5 +188,21 @@ inline vec3 cross(const vec3& v1, const vec3& v2){
 inline vec3 lerp(const vec3& v1, const vec3& v2, float t){
   return t * v2 + (1.0-t) * v1;
 }
+
+vec3 random_in_unit_shpere() {
+  vec3 p;
+  do {
+    p = 2.0 * vec3(drand48(), drand48(), drand48()) - vec3(1,1,1);
+  } while (p.squared_length() >= 1.0);
+  return p;
+}
+
+vec3 reflect(const vec3& v, const vec3& n){
+  return v - 2.0 * dot(v,n)*n;
+}
+
+/******** Alternative names ********/
+using point3 = vec3;
+using color = vec3;
 
 #endif

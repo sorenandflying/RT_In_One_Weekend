@@ -16,42 +16,28 @@ set ( CMAKE_CXX_STANDARD 11 )
 
 # Source
 set ( COMMON_SRC
-  # src/common/camera.cpp
-  # src/common/scene.cpp
-  # src/common/sphere.cpp
   src/common/camera.h
-  src/common/hittable.h
-  src/common/hittable_list.h
-  src/common/sphere.h
-  src/common/hittable.h
-  src/common/vec3.h
+  src/common/color.h
+  src/common/include.h
   src/common/ray.h
+  src/common/vec3.h
 )
 
-# set ( COMMON_INCLUDE
-#   include/common/camera.h
-#   include/common/common.h
-#   include/common/ray.h
-#   include/common/geometry.h
-#   include/common/material.h
-#   include/common/sphere.h
-#   include/common/scene.h
-#   include/common/vec3.h
-# )
+set ( ONEWEEKEND_SRC
+  ${COMMON_SRC}
+  src/InOneWeekend/hittable.h
+  src/InOneWeekend/hittable_list.h
+  src/InOneWeekend/material.h
+  src/InOneWeekend/sphere.h
+
+  src/InOneWeekend/main.cpp
+  src/InOneWeekend/helloworld.cpp
+)
 
 # add_library(common_lib
 #   ${COMMON_SRC}
 #   ${COMMON_INCLUDE}
 # )
-
-
-set ( SOURCE_ONE_WEEKEND
-  # ${COMMON_ALL}
-  ${COMMON_SRC}
-  # ${INCLUDE_ALL}
-  src/InOneWeekend/main.cpp
-  src/InOneWeekend/helloworld.cpp
-)
 
 # Main Executables
 add_executable(inOneWeekend src/InOneWeekend/main.cpp)
@@ -64,5 +50,4 @@ add_executable(helloworld src/InOneWeekend/helloworld.cpp)
 
 include_directories(
   src/common
-  # include/common
 )
