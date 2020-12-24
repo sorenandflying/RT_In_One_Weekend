@@ -32,20 +32,46 @@ vec3 ray_color(const ray& r, const hittable& world, int depth){
 hittable_list get_scene() {
   hittable_list world;
 
-  auto ground_material = make_shared<lambertian>(color(0.5,0.5,0.5));
-  world.add(make_shared<sphere>(point3(0,-1000,0), 1000, ground_material));
+  auto ground_material = make_shared<lambertian>(color(0.8,0.8,0));
+  world.add(make_shared<sphere>(point3(0,-100.5,-1), 100, ground_material));
+
+  auto sphere_material = make_shared<lambertian>(color(0.8,0.3,0.3));
+  world.add(make_shared<sphere>(point3(0,0,-1), 0.5, sphere_material));
+
+  auto metal_material_1 = make_shared<metal>(color(0.8,0.6,0.2), 0.3);
+  world.add(make_shared<sphere>(point3(1,0,-1), 0.5, metal_material_1));
+
+  auto dielectric_material = make_shared<dielectric>(1.5);
+  world.add(make_shared<sphere>(point3(-1,0,-1), 0.5, dielectric_material));
+  world.add(make_shared<sphere>(point3(-1,0,-1), -0.45, dielectric_material));
+
+  return world;
+}
+
+hittable_list get_scene2() {
+  hittable_list world;
+
+  float radius = cos(pi/4);
+
+  auto sphere_material_1 = make_shared<lambertian>(color(0,0,1));
+  auto sphere_material_2 = make_shared<lambertian>(color(1,0,0));
+
+  world.add(make_shared<sphere>(point3(-radius, 0, -1), radius, sphere_material_1));
+  world.add(make_shared<sphere>(point3(radius, 0, -1), radius, sphere_material_2));
 
   return world;
 }
 
 int main() {
-  int nx = 400;
-  int ny = 200;
-  int ns = 50;
+  int nx = 800;
+  int ny = 400;
+  int ns = 100;
   int max_depth = 50;
   std::cout << "P3\n" << nx << " " << ny << "\n255\n";
 
-  camera cam;
+  // camera cam();
+  camera cam(vec3(-2,2,1), vec3(0,0,-1), vec3(0,1,0), 90, float(nx)/float(ny));
+
   auto world = get_scene();
 
   for(int j = ny-1; j >= 0; j--){

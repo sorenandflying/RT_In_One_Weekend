@@ -173,6 +173,12 @@ inline vec3 vec3::norm(){
   return vec3(v[0]/this->length(), v[1]/this->length(), v[2]/this->length());
 }
 
+inline vec3 normalized(const vec3& v1){
+  float k = 1.0/v1.length();
+  vec3 v2 = vec3(v1.x()/k, v1.y()/k, v1.z()/k);
+  return v2;
+}
+
 inline float dot(const vec3& v1, const vec3& v2){
   return v1.v[0] * v2.v[0] + v1.v[1] * v2.v[1] + v1.v[2] * v2.v[2];
 }
@@ -189,7 +195,7 @@ inline vec3 lerp(const vec3& v1, const vec3& v2, float t){
   return t * v2 + (1.0-t) * v1;
 }
 
-vec3 random_in_unit_shpere() {
+vec3 random_in_unit_sphere() {
   vec3 p;
   do {
     p = 2.0 * vec3(drand48(), drand48(), drand48()) - vec3(1,1,1);
@@ -199,6 +205,17 @@ vec3 random_in_unit_shpere() {
 
 vec3 reflect(const vec3& v, const vec3& n){
   return v - 2.0 * dot(v,n)*n;
+}
+
+bool refract(const vec3& v, const vec3& n, float ni_over_nt, vec3& refracted){
+  vec3 uv = normalized(v);
+  float dt = dot(uv, n);
+  float discriminant = 1.0 - ni_over_nt * ni_over_nt * (1.0-dt*dt);
+  if(discriminant > 0){
+    refracted = ni_over_nt * (uv - n*dt) - n*sqrt(discriminant);
+    return true;
+  }
+  return false;
 }
 
 /******** Alternative names ********/
