@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <limits>
 #include <memory>
+#include <thread>
 
 using std::shared_ptr;
 using std::make_shared;
@@ -39,5 +40,21 @@ inline int random_int(int min, int max){
 
 #include "ray.h"
 #include "vec3.h"
+
+vec3 random_in_unit_sphere() {
+  vec3 p;
+  do {
+    p = 2.0 * vec3(drand48(), drand48(), drand48()) - vec3(1,1,1);
+  } while (p.squared_length() >= 1.0);
+  return p;
+}
+
+vec3 random_in_unit_disc(){
+  vec3 p;
+  do{
+    p = vec3(random_double(-1,1), random_double(-1,1), 0);
+  } while (p.length() > 1.0);
+  return p;
+}
 
 #endif

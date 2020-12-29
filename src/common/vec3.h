@@ -162,6 +162,7 @@ inline vec3& vec3::operator/=(const float t){
 }
 
 /******** Vector Math Functions ********/
+// normalizes the vector
 inline void vec3::normalize(){
   float k = 1.0/this->length();
   v[0] *= k;
@@ -169,10 +170,12 @@ inline void vec3::normalize(){
   v[2] *= k;
 }
 
+// returns the normal of the vector
 inline vec3 vec3::norm(){
   return vec3(v[0]/this->length(), v[1]/this->length(), v[2]/this->length());
 }
 
+// Return the unit vector in the direction of v1
 inline vec3 normalized(const vec3& v1){
   float k = 1.0/v1.length();
   vec3 v2 = vec3(v1.x()/k, v1.y()/k, v1.z()/k);
@@ -193,14 +196,6 @@ inline vec3 cross(const vec3& v1, const vec3& v2){
 
 inline vec3 lerp(const vec3& v1, const vec3& v2, float t){
   return t * v2 + (1.0-t) * v1;
-}
-
-vec3 random_in_unit_sphere() {
-  vec3 p;
-  do {
-    p = 2.0 * vec3(drand48(), drand48(), drand48()) - vec3(1,1,1);
-  } while (p.squared_length() >= 1.0);
-  return p;
 }
 
 vec3 reflect(const vec3& v, const vec3& n){
