@@ -34,6 +34,19 @@ set ( ONEWEEKEND_SRC
   src/InOneWeekend/helloworld.cpp
 )
 
+set ( THENEXTWEEK_SRC
+  ${COMMON_SRC}
+  src/TheNextWeek/hittable.h
+  src/TheNextWeek/hittable_list.h
+  src/TheNextWeek/material.h
+  src/TheNextWeek/sphere.h
+
+  src/TheNextWeek/bvh.h
+  src/TheNextWeek/bvh_node.h
+
+  src/TheNextWeek/main.cpp
+)
+
 # add_library(common_lib
 #   ${COMMON_SRC}
 #   ${COMMON_INCLUDE}
@@ -41,6 +54,7 @@ set ( ONEWEEKEND_SRC
 
 # Main Executables
 add_executable(inOneWeekend src/InOneWeekend/main.cpp)
+add_executable(theNextWeek src/TheNextWeek/main.cpp)
 
 # Example Executables
 add_executable(helloworld src/InOneWeekend/helloworld.cpp)
